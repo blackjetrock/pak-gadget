@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name ajm_kicad)(type KiCad)(uri /tree/projects/github/fx-502p-recreate/pcbs/pcb1/fx502-recreate/ajm_kicad.pretty)(options "")(descr ""))
+  (lib (name psion_org_2)(type KiCad)(uri ${KIPRJMOD}/psion_org_2.pretty)(options "")(descr ""))
+)

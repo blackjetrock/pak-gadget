@@ -1,0 +1,21 @@
+1. OLED pinout needs option of supply being reversed. Most are VCC GND
+not GND VCC
+2. Re-aarange TWI and SD signals so HW works wih code.
+   SD MISO DO = 16
+   SD MOSI DI = 19
+   SD SCK     = 18
+   SD SS      = 22
+   
+   TWI    SDA  = 28
+   TWI    SCLK = 17
+   
+   This works on first V1.0 (green) PCB after re-wriring.
+   
+   Blue (V1.1) PCB works with wiring, SD and display after mods done.
+   
+3. Level shifters do not work, Use 74LVC245 shiftr ICs
+4. Add a SWD connector for programming
+5. One bidirectional and Pico switched, the other always Organiser -> Pico
+6. Add jumpers to re-arrange the OLED supply pins (SDA and SCLK too?)
+
+   

@@ -1,0 +1,7 @@
+Picopak V1.0 errata
+
+
+1. Display connector needs to be rotated 180 degrees
+2. Resistor and capacitor footprints are too small, 0603 only just fits
+3. Notch missing
+4. Switch footprint slightly wrong, too large.

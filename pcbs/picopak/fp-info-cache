@@ -1,4 +1,4 @@
--9206313793773336269
+-9206334771539549588
 8wTermBlk
 8wTermBlk
 
@@ -67052,27 +67052,6 @@ WiFi IEEE802.11 b/g/n
 0
 44
 44
-RP2040_minimal
-Crystal_SMD_HC49-US
-SMD Crystal HC-49-SD http://cdn-reichelt.de/documents/datenblatt/B400/xxx-HC49-SMD.pdf, 11.4x4.7mm^2 package
-SMD SMT crystal
-0
-2
-2
-RP2040_minimal
-RP2040-QFN-56
-QFN, 56 Pin (http://www.cypress.com/file/416486/download#page=40), generated with kicad-footprint-generator ipc_dfn_qfn_generator.py
-QFN DFN_QFN
-0
-70
-57
-RP2040_minimal
-USB_Micro-B_Amphenol_10103594-0001LF_Horizontal_modified
-Micro USB Type B 10103594-0001LF, http://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/10103594.pdf
-USB USB_B USB_micro USB_OTG
-0
-17
-6
 Relay_SMD
 Relay_DPDT_AXICOM_IMSeries_JLeg
 http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Specification+Or+Standard%7F108-98001%7FW5%7Fpdf%7FEnglish%7FENG_SS_108-98001_W5.pdf
@@ -75523,82 +75502,12 @@ SRX882
 6
 6
 ajm_kicad
-.fx502_battery_cn
+picoram_pico
 
 
 0
-1
-1
-ajm_kicad
-Conn_uSDcard
-
-
 0
-13
-9
-ajm_kicad
-OLED_SMALL
-
-
 0
-4
-4
-ajm_kicad
-fx502p_edge_2_54_2
-
-
-0
-2
-2
-ajm_kicad
-fx502p_edge_2_54_5
-
-
-0
-5
-5
-ajm_kicad
-fx502p_keypad
-
-
-0
-12
-2
-ajm_kicad
-fx502p_power_sw
-
-
-0
-10
-10
-ajm_kicad
-fx602p_neg
-
-
-0
-1
-1
-ajm_kicad
-fx602p_pos
-
-
-0
-1
-1
-ajm_kicad
-fx602p_round_pad
-
-
-0
-1
-1
-ajm_kicad
-fx602p_switch
-
-
-0
-5
-3
 mirotan-due-cassette-shield
 AG12864E
 STN/FSTN LCD 128x64 dot https://www.digchip.com/datasheets/parts/datasheet/1121/AG-12864E-pdf.php
@@ -75844,13 +75753,6 @@ truconnect-20-0138-mono-socket
 0
 5
 5
-psion_org_2
-Psion_datapak_2x08_P2.54mm_Horizontal
-Through hole angled pin header, 2x08, 2.54mm pitch, 6mm pin length, double rows Psion2 Datapak
-Through hole angled pin header THT 2x08 2.54mm double row
-0
-16
-16
 rp2040
 Crystal_SMD_HC49-US
 SMD Crystal HC-49-SD http://cdn-reichelt.de/documents/datenblatt/B400/xxx-HC49-SMD.pdf, 11.4x4.7mm^2 package

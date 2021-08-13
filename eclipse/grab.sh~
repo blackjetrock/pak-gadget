@@ -1,0 +1,3 @@
+sudo cp -R /tree/downloaded_tools/pico/pak-gadget pak-gadget
+sudo cp -R /tree/downloaded_tools/pico/pak-gadget-eclipse pakgadget-eclipse
+

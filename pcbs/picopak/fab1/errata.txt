@@ -1,7 +1,10 @@
 Picopak V1.0 errata
 
 
-1. Display connector needs to be rotated 180 degrees
-2. Resistor and capacitor footprints are too small, 0603 only just fits
-3. Notch missing
-4. Switch footprint slightly wrong, too large.
+1. Display connector needs to be rotated 180 degrees, also move in slightly [DONE]
+2. Resistor and capacitor footprints are too small, 0603 only just fits  [Using smaller components.]
+3. Notch missing [
+4. Switch footprint slightly wrong, too large. [leaving as OK to build]
+5. Attempt to power from slot connector, maybe 5V can be persuaded to be on permanently? Or switched differently? 
+6. Pull up resistors both go to SDA [FIXED]
+

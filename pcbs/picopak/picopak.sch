@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MCU_RaspberryPi_RP2040:RP2040 U3
+L picopak-rescue:RP2040-MCU_RaspberryPi_RP2040 U3
 U 1 1 5ED8F5D6
 P 7800 5700
 F 0 "U3" H 6700 7650 50  0000 C CNN
@@ -645,7 +645,7 @@ U 1 1 5F0930A1
 P 3700 1950
 F 0 "C4" H 3815 1996 50  0000 L CNN
 F 1 "10u" H 3815 1905 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0805_2012Metric" H 3738 1800 50  0001 C CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" H 3738 1800 50  0001 C CNN
 F 3 "~" H 3700 1950 50  0001 C CNN
 	1    3700 1950
 	1    0    0    -1  
@@ -1174,15 +1174,15 @@ $EndComp
 $Comp
 L Connector:Conn_01x04_Female J?
 U 1 1 613957E3
-P 9325 9825
+P 9325 9725
 AR Path="/6104FF77/613957E3" Ref="J?"  Part="1" 
 AR Path="/613957E3" Ref="J4"  Part="1" 
-F 0 "J4" H 9217 10110 50  0000 C CNN
-F 1 "Conn_01x04_Female" H 9217 10019 50  0000 C CNN
-F 2 "ajm_kicad:OLED_SMALL" H 9325 9825 50  0001 C CNN
-F 3 "~" H 9325 9825 50  0001 C CNN
-	1    9325 9825
-	-1   0    0    1   
+F 0 "J4" H 9217 10010 50  0000 C CNN
+F 1 "Conn_01x04_Female" H 9217 9919 50  0000 C CNN
+F 2 "ajm_kicad:OLED_SMALL" H 9325 9725 50  0001 C CNN
+F 3 "~" H 9325 9725 50  0001 C CNN
+	1    9325 9725
+	-1   0    0    -1  
 $EndComp
 $Comp
 L power:+3V3 #PWR?
@@ -1351,7 +1351,7 @@ Wire Wire Line
 Wire Wire Line
 	9525 9925 9900 9925
 Wire Wire Line
-	9525 9725 11250 9725
+	9525 9725 10900 9725
 Wire Wire Line
 	9525 9625 10400 9625
 Text Notes 13100 7800 0    50   ~ 0
@@ -1400,13 +1400,6 @@ Wire Wire Line
 	10400 9500 10400 9625
 Connection ~ 10400 9625
 Wire Wire Line
-	10900 9500 10900 9625
-Wire Wire Line
-	10400 9625 10900 9625
-Connection ~ 10900 9625
-Wire Wire Line
-	10900 9625 11250 9625
-Wire Wire Line
 	9950 9075 9950 9200
 Wire Wire Line
 	10400 9200 10400 9300
@@ -1420,4 +1413,11 @@ Wire Wire Line
 Connection ~ 9950 9200
 Wire Wire Line
 	9950 9200 9950 9825
+Wire Wire Line
+	10400 9625 11250 9625
+Wire Wire Line
+	10900 9500 10900 9725
+Connection ~ 10900 9725
+Wire Wire Line
+	10900 9725 11250 9725
 $EndSCHEMATC

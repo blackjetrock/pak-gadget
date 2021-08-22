@@ -1,4 +1,4 @@
--9206334771539549588
+-9206318622667026269
 8wTermBlk
 8wTermBlk
 
@@ -75502,12 +75502,82 @@ SRX882
 6
 6
 ajm_kicad
-picoram_pico
+.fx502_battery_cn
 
 
 0
+1
+1
+ajm_kicad
+Conn_uSDcard
+
+
 0
+13
+9
+ajm_kicad
+OLED_SMALL
+
+
 0
+4
+4
+ajm_kicad
+fx502p_edge_2_54_2
+
+
+0
+2
+2
+ajm_kicad
+fx502p_edge_2_54_5
+
+
+0
+5
+5
+ajm_kicad
+fx502p_keypad
+
+
+0
+12
+2
+ajm_kicad
+fx502p_power_sw
+
+
+0
+10
+10
+ajm_kicad
+fx602p_neg
+
+
+0
+1
+1
+ajm_kicad
+fx602p_pos
+
+
+0
+1
+1
+ajm_kicad
+fx602p_round_pad
+
+
+0
+1
+1
+ajm_kicad
+fx602p_switch
+
+
+0
+5
+3
 mirotan-due-cassette-shield
 AG12864E
 STN/FSTN LCD 128x64 dot https://www.digchip.com/datasheets/parts/datasheet/1121/AG-12864E-pdf.php
@@ -75753,6 +75823,13 @@ truconnect-20-0138-mono-socket
 0
 5
 5
+psion_org_2
+Psion_datapak_2x08_P2.54mm_Horizontal
+Through hole angled pin header, 2x08, 2.54mm pitch, 6mm pin length, double rows Psion2 Datapak
+Through hole angled pin header THT 2x08 2.54mm double row
+0
+16
+16
 rp2040
 Crystal_SMD_HC49-US
 SMD Crystal HC-49-SD http://cdn-reichelt.de/documents/datenblatt/B400/xxx-HC49-SMD.pdf, 11.4x4.7mm^2 package

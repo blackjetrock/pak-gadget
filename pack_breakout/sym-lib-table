@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name 502p)(type Legacy)(uri /tree/projects/github/fx-502p-recreate/pcbs/pcb1/fx502-recreate/fx502p.lib)(options "")(descr ""))
+  (lib (name pak_breakout-rescue)(type Legacy)(uri ${KIPRJMOD}/pak_breakout-rescue.lib)(options "")(descr ""))
 )

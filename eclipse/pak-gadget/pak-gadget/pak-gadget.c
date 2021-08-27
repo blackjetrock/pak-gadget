@@ -11,16 +11,22 @@
 #include "f_util.h"
 
 #include "ff.h"
+#include "ff_stdio.h"
 #include "hw_config.h"
 #include "my_debug.h"
 #include "rtc.h"
 
-#define DEBUG_STOP {int x = 1; while(x) {} }
+#define DEBUG_STOP {volatile int x = 1; while(x) {} }
 
 // Are we compiling for the gadget breakout or the picopak?
 #define PICOPAK 1
 
-// redefine pins to match our hardware
+// Drop into a loop that displays key states and does nothing else
+#define KEY_DEBUG_ONLY                0
+#define NO_INTERRUPTS_WHILE_POLLING   0
+#define TEST_STDIO                    0
+
+// Redefine pins to match our hardware
 #define PICO_SD_CLK_PIN  5
 #define PICO_SD_CMD_PIN  18
 #define PICO_SD_DAT0_PIN 19
@@ -61,10 +67,17 @@ const uint SCL_PIN    = 17;
 
 typedef unsigned char BYTE;
 
+#if PICOPAK
+const int SW0_PIN       = 0;
+const int SW1_PIN       = 1;
+const int SW2_PIN       = 5;
+const int SW3_PIN       = 26;
+#else
 const int SW0_PIN       = 0;
 const int SW1_PIN       = 1;
 const int SW2_PIN       = 26;
 const int SW3_PIN       = 5;
+#endif
 
 const int SLOT_SPGM_PIN = 2;
 const int SLOT_SS_PIN   = 3;
@@ -137,6 +150,15 @@ typedef struct _I2C_SLAVE_DESC
   unsigned char slave_7bit_addr;        // SLave address
 } I2C_SLAVE_DESC;
 
+
+#if PICOPAK
+#define MENU_MAX  3
+#else
+#define MENU_MAX  6
+#endif
+
+int menu_offset = 0;
+
 typedef struct _BUTTON
 {
   int     count;
@@ -163,8 +185,8 @@ struct MENU_ELEMENT
 
 void button_display(struct MENU_ELEMENT *e);
 void button_list(struct MENU_ELEMENT *e);
-void but_ev_file_up();
-void but_ev_file_down();
+//void but_ev_file_up();
+//void but_ev_file_down();
 void but_ev_file_select();
 
 void loop_delay(int delay)
@@ -1293,7 +1315,7 @@ void oled_set_pixel_xy(I2C_SLAVE_DESC *slave, int x, int y)
 //
 
 
-int but_pins[NUM_BUTTONS] = {SW0_PIN, SW1_PIN, SW2_PIN, SW3_PIN};
+int but_pins[NUM_BUTTONS] = {SW0_PIN, SW1_PIN, SW2_PIN};
 
 
 void but_ev_up();
@@ -1303,19 +1325,21 @@ void draw_menu(I2C_SLAVE_DESC *slave, struct MENU_ELEMENT *e, bool clear);
 
 
 struct MENU_ELEMENT *current_menu;
+int file_menu_size = 0;
+
 struct MENU_ELEMENT *last_menu;
 struct MENU_ELEMENT *the_home_menu;
-unsigned int menu_selection = 0;
-unsigned int menu_size = 0;
+int menu_selection = 0;
+//unsigned int menu_size = 0;
 
-#define MAX_LISTFILES 7
+#define MAX_LISTFILES 200
 #define MAX_NAME 20
 
 struct MENU_ELEMENT listfiles[MAX_LISTFILES+1];
 int num_listfiles;
 char names[MAX_LISTFILES][MAX_NAME];
-char selected_file[MAX_NAME+1];
 char current_file[MAX_NAME+1];
+
 // read the file with the given name into the buffer
 
 void core_read(I2C_SLAVE_DESC *slave, char *arg);
@@ -1816,10 +1840,7 @@ void find_next_file_number(void)
   FRESULT fr;
   char const *p_dir;
 
-  volatile int x = 0;
-  while (x)
-    {
-    }
+  //DEBUG_STOP;
 
   if( cd_to_pak_dir(&oled0) )
     {
@@ -1919,10 +1940,24 @@ void unmount_sd(void)
 // Puts up a list of the files on the SD card PAK directory, so one can be
 // chosen.
 //
-// Only displays .opk files as they are th eonly ones that can be loaded.
+// Only displays .opk files as they are the only ones that can be loaded.
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
+// returns the number of elements in a menu
+int menu_size(struct MENU_ELEMENT *menu)
+{
+  int result = 0;
+  
+    while( menu->type != MENU_END )
+    {
+      result++;
+      menu++;
+    }
+    
+    return(result);
+}
 
 void button_list(struct MENU_ELEMENT *e)
 {
@@ -1934,10 +1969,7 @@ void button_list(struct MENU_ELEMENT *e)
   FRESULT fr;
   char const *p_dir;
 
-  volatile int x = 0;
-  while (x)
-    {
-    }
+  //DEBUG_STOP;
 
   mount_sd();
   
@@ -1987,7 +2019,7 @@ void button_list(struct MENU_ELEMENT *e)
 	   char extension[40];
 	   char name[80];
 	   
-	   // If the file has an extension of .opk then dipslay it
+	   // If the file has an extension of .opk then display it
 	   // otherwise ignore.
 	   extension[0] = '\0';
 	   
@@ -2026,15 +2058,17 @@ void button_list(struct MENU_ELEMENT *e)
   listfiles[num_listfiles].submenu = NULL;
   listfiles[num_listfiles].function = button_select_file;
 
-    // We know how big the menu is now
+
+#if 1// We know how big the menu is now
   if( num_listfiles != 0 )
     {
-      menu_size = num_listfiles;
+      file_menu_size = num_listfiles;
     }
+#endif
 
   // Button actions modified
-  buttons[0].event_fn = but_ev_file_up;
-  buttons[1].event_fn = but_ev_file_down;
+  buttons[0].event_fn = but_ev_up;
+  buttons[1].event_fn = but_ev_down;
   buttons[2].event_fn = but_ev_file_select;
 
   // Set up menu of file names
@@ -2286,7 +2320,6 @@ typedef void (*CMD_FPTR)(char *cmd);
 struct MENU_ELEMENT listfiles[MAX_LISTFILES+1];
 int num_listfiles;
 char names[MAX_LISTFILES][MAX_NAME];
-char selected_file[MAX_NAME+1];
 char current_file[MAX_NAME+1];
 
 int cd_to_pak_dir(I2C_SLAVE_DESC *slave)
@@ -2296,10 +2329,7 @@ int cd_to_pak_dir(I2C_SLAVE_DESC *slave)
   char cwdbuf[FF_LFN_BUF] = {0};
   char const *p_dir;
 
-  volatile x = 0;
-  while(x)
-    {
-    }
+  //DEBUG_STOP
 
   f_chdrive("0:");
 
@@ -2349,6 +2379,77 @@ int cd_to_pak_dir(I2C_SLAVE_DESC *slave)
   return(0);
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// Read and process the config file
+//
+////////////////////////////////////////////////////////////////////////////////
+
+void process_config_file(I2C_SLAVE_DESC *slave)
+{
+  char line[40];
+  char fileline[80];
+
+  //DEBUG_STOP;
+  
+  mount_sd();
+  
+  if( cd_to_pak_dir(slave) )
+    {
+      unmount_sd();
+      return;
+    }
+  
+  oled_clear_display(slave);
+  oled_set_xy(slave, 0, 0);
+  sprintf(line, "Processing");
+  oled_display_string(slave, line);
+      
+  oled_set_xy(slave, 0, 8);
+  sprintf(line, "config.txt");
+  oled_display_string(slave, line);
+  
+  loop_delay(1000000);
+
+  // Read the file from the SD card into the pak memory
+  FF_FILE *fp = ff_fopen("config.txt", "r");
+
+  if (fp == NULL)
+    {
+      sprintf(line, "Failed to open:");
+      oled_clear_display(slave);
+      oled_set_xy(slave, 0, 0);
+      oled_display_string(slave, line);
+      
+      oled_set_xy(slave, 0, 7);
+      sprintf(line, "config.txt");
+      oled_display_string(slave, line);
+
+      loop_delay(3000000);
+      unmount_sd();
+      return;
+    }
+
+  // Get a line from the file
+  ff_fgets(&(fileline[0]), sizeof(fileline)-1, fp);
+  fileline[strlen(fileline)-1] = '\0';
+
+  ff_fclose(fp);
+  unmount_sd();
+
+  char keyword[80];
+  char name[80];
+
+  sscanf(fileline, "%[^=]=%s", keyword, name);
+  if( strcmp(keyword, "startfile") == 0 )
+    {
+      strcpy(current_file, name);
+
+      // read the file
+      core_read(&oled0, current_file);
+    }
+}
+
 // Read the file with the given name into the buffer
 // Pak images are in a directory called PAK
 
@@ -2356,10 +2457,7 @@ void core_read(I2C_SLAVE_DESC *slave, char * arg)
 {
   char line[40];
 
-  volatile int x = 0;
-  while(x)
-    {
-    }
+  //DEBUG_STOP;
 
   mount_sd();
   
@@ -2480,10 +2578,7 @@ void core_writefile(bool oled_nserial)
   int bytes_written = 0;
   char line[40];
 
-  volatile int x = 0;
-  while(x)
-    {
-    }
+  //DEBUG_STOP
 
   mount_sd();
   
@@ -2542,6 +2637,7 @@ void core_writefile(bool oled_nserial)
 void to_back_menu(struct MENU_ELEMENT *e)
 {
   menu_selection = 0;
+  menu_offset = 0;
   current_menu = last_menu;
   draw_menu(&oled0, current_menu, true);
 }
@@ -2549,6 +2645,7 @@ void to_back_menu(struct MENU_ELEMENT *e)
 void to_home_menu(struct MENU_ELEMENT *e)
 {
   menu_selection = 0;
+  menu_offset = 0;
   current_menu = the_home_menu;
   draw_menu(&oled0, current_menu, true);
 }
@@ -2575,70 +2672,56 @@ void button_write(struct MENU_ELEMENT *e)
 // File selected
 void button_select_file(struct MENU_ELEMENT *e)
 {
-  strcpy(selected_file, e->text);
-
-  // Back a menu
-  to_back_menu(e);
-  
 }
 
-void but_ev_file_up()
+//--------------------------------------------------------------------------------
+
+// Move up in a menu
+
+void but_ev_up()
 {
-  if( menu_selection == 0 )
+  // Move up one place
+  menu_selection--;
+
+  // Keep within bounds
+  if( menu_selection <= 0 )
     {
-      if( file_offset == 0 )
-	{
-	  // Don't move
-	}
-      else
-	{
-	  // Move files back one
-	  file_offset--;
-	}
-    }
-  else
-    {
-      // Move cursor up
-      menu_selection--;
+      menu_selection = 0;
     }
 
-  button_list(NULL);
-
-  if( menu_selection >= menu_size )
+  // Now move offset up if it is greter than selection
+  if( menu_offset > menu_selection )
     {
-      menu_selection = menu_size - 1;
+      menu_offset = menu_selection;
     }
+  
+  draw_menu(&oled0, current_menu, false);
 }
 
-void but_ev_file_down()
+void but_ev_down()
 {
   // Move cursor down one entry
   menu_selection++;
-  
-  // Are we off the end of the menu?
-  if( menu_selection == menu_size )
-    {
-      // 
-      if( menu_selection >= MAX_LISTFILES,1 )
-	{
-	  menu_selection--;
 
-	  // If the screen is full then we haven't reached the end of the file list
-	  // so move the list up one
-	  if( menu_size == MAX_LISTFILES )
-	    {
-	      file_offset++;
-	    }
+  // Are we off the end of the menu?
+  if( menu_selection == menu_size(current_menu) )
+    {
+      // At last element of menu
+      menu_selection--;
+    }
+
+  // Do we need to pull the top element down?
+  if( (menu_selection - menu_offset) >= MENU_MAX )
+    {
+      menu_offset = menu_selection - MENU_MAX+1;
+      if( menu_offset < 0 )
+	{
+	  menu_offset = 0;
 	}
     }
-
-  // We need to make sure cursor is on menu
-  if( menu_selection >= menu_size )
-    {
-      menu_selection = menu_size - 1;
-    }
-
-  button_list(NULL);
+  
+  draw_menu(&oled0, current_menu, false);
+  //  button_list(NULL);
 }
 
 // Store file name and exit menu
@@ -2661,6 +2744,9 @@ void but_ev_file_select()
   oled_display_string(&oled0, line);
 
   loop_delay(3000000);
+
+  // As well as selecting the file, read in in to the buffer as well
+  core_read(&oled0, current_file);
 
   menu_selection = 0;
   to_home_menu(NULL);
@@ -2750,14 +2836,16 @@ void button_list_old(struct MENU_ELEMENT *e)
   listfiles[num_listfiles].function = button_select_file;
 
   // We know how big the menu is now
+#if 0
   if( num_listfiles != 0 )
     {
       menu_size = num_listfiles;
     }
-
+#endif
+  
   // Button actions modified
-  buttons[0].event_fn = but_ev_file_up;
-  buttons[1].event_fn = but_ev_file_down;
+  buttons[0].event_fn = but_ev_up;
+  buttons[1].event_fn = but_ev_down;
   buttons[2].event_fn = but_ev_file_select;
 
   // Set up menu of file names
@@ -2924,17 +3012,133 @@ struct MENU_ELEMENT home_menu[] =
   };
 
 // Clear flag indicates whether we redraw the menu text and clear the screen. Or not.
+//
+// Menus are displayed starting at menu_offset and will only put
+// MENU_MAX lines on the screen
+// This allows eithee size of display to be used
 
 void draw_menu(I2C_SLAVE_DESC *slave, struct MENU_ELEMENT *e, bool clear)
+{
+  int i = 0;
+  char etext[50];
+
+  e = current_menu;
+
+  //DEBUG_STOP
+  
+  // Clear screen
+  if(clear,1)
+    {
+      oled_clear_display(slave);
+      //display.clearDisplay();
+    }
+
+  int entry_number = -1;
+  
+  while( e->type != MENU_END )
+    {
+      entry_number++;
+      
+      // Skip the first menu_offset entries
+      if( entry_number < menu_offset )
+	{
+	  e++;
+	  continue;
+	}
+
+      // Don't ever display more than MENU_MAX elements
+      if( (entry_number - menu_offset) > MENU_MAX )
+	{
+	  break;
+	}
+
+      if( entry_number == menu_selection )
+	{
+	  sprintf(etext, ">%-19s", e->text);
+	}
+      else
+	{
+	  sprintf(etext, " %-19s", e->text);
+	}
+      
+      switch(e->type)
+	{
+	case BUTTON_ELEMENT:
+	  oled_set_xy(slave, 0, i*8);
+	  //display.printChar(curs);
+	  if( clear,1 )
+	    {
+	      oled_display_string(slave, etext);
+	    }
+	  break;
+
+	case SUB_MENU:
+	  oled_set_xy(slave, 0, i*8);
+	  //	  display.setCursor(0, i*8);
+	  //display.printChar(curs);
+	  if ( clear,1 )
+	    {
+	      oled_display_string(slave, etext);
+	      //	      display.println(etext);
+	    }
+	  break;
+	}
+
+      e++;
+      i++;
+    }
+  
+  //menu_size = i;
+
+  // Blank the other entries
+  //make sure menu_selection isn't outside the menu
+  if( menu_selection >= menu_size(current_menu) )
+    {
+      menu_selection = menu_size(current_menu)-1;
+    }
+
+  for(; i<MENU_MAX; i++)
+    {
+      oled_set_xy(slave, 0, i*8);
+      oled_display_string(slave, "               ");
+      //      display.setCursor(0, i*8);
+      //display.println("               ");
+    }
+
+#if 0  
+  for(i=menu_offset; i<menu_offset+MENU_MAX-1;i++)
+    {
+      if( i == menu_selection )
+	{
+	  curs = ">";	  
+	}
+      else
+	{
+	  curs = " ";
+	}
+
+      oled_set_xy(slave, 0, i*8);
+      oled_display_string(slave, curs);
+
+      //display.setCursor(0, i*8);
+      //display.print(curs);
+    }
+#endif  
+#if 0
+  char line[40];
+  oled_set_xy(slave, 0, 8);
+  sprintf(line, "%d %d %d %d  ", menu_selection, menu_offset, menu_size(current_menu), file_menu_size);
+  oled_display_string(slave, line);
+#endif
+}
+
+void old_draw_menu(I2C_SLAVE_DESC *slave, struct MENU_ELEMENT *e, bool clear)
 {
   int i = 0;
   char *curs = " ";
   char etext[20];
 
-  volatile int x = 0;
-  while(x)
-    {
-    }
+  //DEBUG_STOP
   
   // Clear screen
   if(clear,1)
@@ -2973,13 +3177,13 @@ void draw_menu(I2C_SLAVE_DESC *slave, struct MENU_ELEMENT *e, bool clear)
       i++;
     }
   
-  menu_size = i;
+  //menu_size = i;
 
   // Blank the other entries
   //make sure menu_selection isn't outside the menu
-  if( menu_selection >= menu_size )
+  if( menu_selection >= menu_size(current_menu) )
     {
-      menu_selection = menu_size-1;
+      menu_selection = menu_size(current_menu)-1;
     }
 
   for(; i<MAX_LISTFILES; i++)
@@ -2990,7 +3194,7 @@ void draw_menu(I2C_SLAVE_DESC *slave, struct MENU_ELEMENT *e, bool clear)
       //display.println("               ");
     }
 
-  for(i=0;i<menu_size;i++)
+  for(i=0;i<menu_size(current_menu);i++)
     {
       if( i == menu_selection )
 	{
@@ -3014,28 +3218,26 @@ void but_ev_null()
 { 
 }
 
-void but_ev_up()
+void old_but_ev_up()
 {
   if( menu_selection == 0 )
     {
-      menu_selection = menu_size - 1;
+      menu_selection = menu_size(current_menu) - 1;
     }
   else
     {
-      menu_selection = (menu_selection - 1) % menu_size;
+      menu_selection = (menu_selection - 1) % menu_size(current_menu);
     }
   
   draw_menu(&oled0, current_menu, false);
 }
 
-void but_ev_down()
+void old_but_ev_down()
 {
 
-  volatile int x= 0;
-  while(x)
-    {
-    }
-  menu_selection = (menu_selection + 1) % menu_size;
+  //DEBUG_STOP
+
+  menu_selection = (menu_selection + 1) % menu_size(current_menu);
 
   draw_menu(&oled0, current_menu, false);
 }
@@ -3424,10 +3626,11 @@ void handle_address(void)
 
 int main()
 {
-  volatile int x = 0;
-  while(x)
-    {
-    }
+  //DEBUG_STOP;
+  char line[80];
+
+  // Set up default file name, default is angling pak
+  strcpy(current_file, "angler.opk");
   
 #if FF_FIRST_BYTES
   for(int k=0; k< 100; k++)
@@ -3438,6 +3641,25 @@ int main()
 
   stdio_init_all();
 
+  printf("\nPAK gadget\n");
+  
+#if TEST_STDIO
+  {
+  int count;
+  while (true)
+    {
+      count++;
+      
+      if( (count % 1000000) == 0 )
+	{
+	  sprintf(line, "\nRP2040: %d", count);
+	  printf(line);
+	}
+    }
+  }
+#endif
+
+  printf("\nSetting GPIOs...");
   gpio_init(22);
   
   // Select the SD card
@@ -3479,10 +3701,14 @@ int main()
   gpio_set_irq_enabled_with_callback(SLOT_SPGM_PIN, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
 #endif
 
+  printf("\nInitialising Sd card driver...");
+  
   // Initialise SD card driver
   sd_init_driver();
 
-  // Set up buton gpios
+  printf("\nSetting up buttons...");
+  
+  // Set up button gpios
   for(int i=0; i<NUM_BUTTONS; i++)
     {
       gpio_init(but_pins[i]);
@@ -3494,11 +3720,17 @@ int main()
 #endif
     }
 
+  // SW3 is special for now
+  gpio_init(SW3_PIN);
+  gpio_set_dir(SW3_PIN, GPIO_IN);
   
-  printf("\033[2J\033[H");  // Clear Screen
-  printf("\n> ");
-  stdio_flush();
-
+#if PICOPAK      
+  // Set pull ups for buttons
+  gpio_set_pulls(SW3_PIN, 1, 0);
+#endif
+  
+  printf("\nSetting up OLED...");
+    
   // Set up OLED display
   i2c_init(&i2c_bus_0);
     
@@ -3528,7 +3760,6 @@ int main()
 #if 1
       // Monitor the SS line and count how many falling edges there are
       
-      char line[80];
       sprintf(line, "%d %d %d %d        ", count, ss_count, ss_address, soe_state);
       oled_set_xy(&oled0, 0, 21);
       oled_display_string(&oled0, line);
@@ -3541,6 +3772,16 @@ int main()
 
 #if USE_POLLING
   // Use a polling loop for minimum latency
+
+#if NO_INTERRUPTS_WHILE_POLLING  
+  // Turn off timer interrupts
+  irq_set_mask_enabled(0xf, false);
+#endif
+
+
+  // Read config file into memory buffer
+  // That will tell us which file to load
+  process_config_file(&oled0);
 
   while(1)
     {
@@ -3562,8 +3803,9 @@ int main()
       int smr;
       int spgm;
 
-      // Turn off timer interrupts
-      irq_set_mask_enabled(0xf, false);
+      printf("\nPak gadget\n");
+      stdio_flush();
+      
       
       // Overall loop, which contains the polling loop and the menu loop
       oled_clear_display(&oled0);
@@ -3575,11 +3817,18 @@ int main()
       oled_set_xy(&oled0, 0,14);
       oled_display_string(&oled0, "Interrupts");
 #endif
+
       
+#if 0      
 #if USE_POLLING
       oled_set_xy(&oled0, 0,14);
       oled_display_string(&oled0, "Polling");
 #endif
+#endif
+
+      sprintf(line, "%s", current_file);
+      oled_set_xy(&oled0, 0, 14);
+      oled_display_string(&oled0, line);
       
       // Mount and unmount the SD card to set the sd_ok_flag up
       mount_sd();
@@ -3596,14 +3845,18 @@ int main()
 	}
 
       oled_set_xy(&oled0, 0,28);
-      oled_display_string(&oled0, "Top Bbbb:Menu");
-
+#if PICOPAK
+      oled_display_string(&oled0, "Left Button:Menu");
+#else      
+      oled_display_string(&oled0, "Bottom Button:Menu");
+#endif
+      
       oled_set_xy(&oled0, 0,35);
       //oled_display_string(&oled0, current_file);
 
-#if 0      
+#if KEY_DEBUG_ONLY
       oled_clear_display(&oled0);
-      char line[80];
+
       while(1)
 	{
 	  oled_set_xy(&oled0, 0,0);
@@ -3858,17 +4111,15 @@ int main()
       
 	}
 
+#if NO_INTERRUPTS_WHILE_POLLING 
       // Re-enable interrupts
       //irq_set_mask_enabled(0xf, true);
-
+#endif
+      
       // leave the bus as inputs
       //set_bus_inputs();
 
-      volatile int x = 0;
-      while(x)
-	{
-	}
-
+      //DEBUG_STOP
 #if 1
       // Indicate we are now in menu
       oled_clear_display(&oled0);

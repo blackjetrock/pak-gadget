@@ -1,4 +1,4 @@
--9206318622667026269
+17050052669844341
 8wTermBlk
 8wTermBlk
 
@@ -90,13 +90,6 @@ BLUEPILL-EXTENSION
 0
 31
 28
-BP
-BLUEPILL_NOSWD
-
-
-0
-40
-37
 BP
 Pin_Header_Angled_1x06_Pitch2.54mm
 Through hole angled pin header, 1x06, 2.54mm pitch, 6mm pin length, single row
@@ -70286,6 +70279,41 @@ TANBUS
 0
 64
 64
+TANBUS65
+BERG_POWER_4x1
+
+CONN
+0
+4
+4
+TANBUS65
+C2V7
+Condensateur polarise
+CP
+0
+2
+2
+TANBUS65
+PhonoSkt
+
+
+0
+3
+3
+TANBUS65
+TANBUS
+
+
+0
+64
+64
+TANBUS65
+TO92_vert
+Transistor TO92 brochage type BC237
+TR TO92
+0
+3
+3
 TerminalBlock
 TerminalBlock_Altech_AK300-2_P5.00mm
 Altech AK300 terminal block, pitch 5.0mm, 45 degree angled, see http://www.mouser.com/ds/2/16/PCBMETRC-24178.pdf
@@ -75516,13 +75544,6 @@ Conn_uSDcard
 13
 9
 ajm_kicad
-OLED_SMALL
-
-
-0
-4
-4
-ajm_kicad
 fx502p_edge_2_54_2
 
 
@@ -75843,13 +75864,6 @@ QFN, 56 Pin (http://www.cypress.com/file/416486/download#page=40), generated wit
 QFN DFN_QFN
 0
 70
-57
-rp2040
-RP2040-QFN-56-no_holes
-QFN, 56 Pin (http://www.cypress.com/file/416486/download#page=40), generated with kicad-footprint-generator ipc_dfn_qfn_generator.py
-QFN DFN_QFN
-0
-61
 57
 rp2040
 RPi_Pico_SMD_TH

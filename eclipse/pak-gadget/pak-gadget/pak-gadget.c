@@ -15,7 +15,9 @@
 #include "hw_config.h"
 #include "my_debug.h"
 #include "rtc.h"
+#include "sd_card.h"
 
+// Use this if breakpoints don't work
 #define DEBUG_STOP {volatile int x = 1; while(x) {} }
 
 // Are we compiling for the gadget breakout or the picopak?
@@ -23,50 +25,62 @@
 
 // Drop into a loop that displays key states and does nothing else
 #define KEY_DEBUG_ONLY                0
+
+// Interrupts may muck up the pack interface, but it does seem to run with them enabled.
+// If USB is ever to work then interrupts need to be enabled.
 #define NO_INTERRUPTS_WHILE_POLLING   0
 #define TEST_STDIO                    0
 
 // Redefine pins to match our hardware
-#define PICO_SD_CLK_PIN  5
-#define PICO_SD_CMD_PIN  18
-#define PICO_SD_DAT0_PIN 19
-#define ENABLE_4_PIN 0
+#define PICO_SD_CLK_PIN        5
+#define PICO_SD_CMD_PIN       18
+#define PICO_SD_DAT0_PIN      19
+#define ENABLE_4_PIN           0
 
-#include "sd_card.h"
+#define SUPPORT_ID_BYTE        1
+#define PAK_ID_BYTE         0x01
+#define READ_ONLY              0
+#define INIT_PAK_MEMORY        1
+#define FF_FIRST_BYTES         0
 
-#define SUPPORT_ID_BYTE  1
-#define PAK_ID_BYTE      0x01
-#define READ_ONLY        0
-#define INIT_PAK_MEMORY  1
-#define FF_FIRST_BYTES   0
+// Direct access to GPIO registers is faster, and we need speed
+#define DIRECT_GPIO            1
 
-#define DIRECT_GPIO  1
+// Number of buttons used for the menu system. The 'exit polling' button is not in this
+// list, it is coded as a GPIO line as we don't want to waste time processing the menu
+// buttons inthe fast polling loop
 
-#define NUM_BUTTONS 3
-#define PAK_DIR "/PAK"
+#define NUM_BUTTONS            3
+
+// All organiser files are in this subdirectory on the SD card, just to keep things tidy
+// and allow the card to be used for other things if needed.
+#define PAK_DIR                "/PAK"
 
 // Debounce
-#define MAX_BUT_COUNT 6
+#define MAX_BUT_COUNT          6
 
 bool sd_ok_flag = false;
 
 // Do we use a polling loop of interrupts?
-#define USE_INTERRUPTS  0
-#define USE_POLLING     1
+#define USE_INTERRUPTS         0
+#define USE_POLLING            1
 
-#define MULTICORE_POLL   1
+// For added speed, we poll the address counter stuff on the other core
+#define MULTICORE_POLL         1
 
 // The address into pak memory
 #define PAK_ADDRESS (ss_address | ss_page)
 
-const uint SDA_PIN    = 28;
-const uint SCL_PIN    = 17;
+// For the OLED display
+const uint SDA_PIN             = 28;
+const uint SCL_PIN             = 17;
 
 #ifndef I2C_FUNCTIONS_H_
 #define I2C_FUNCTIONS_H_
 
 typedef unsigned char BYTE;
 
+// Buttons got changed for PCB layout reasons
 #if PICOPAK
 const int SW0_PIN       = 0;
 const int SW1_PIN       = 1;
@@ -103,12 +117,12 @@ volatile int ss_address = 0;
 volatile int ss_page = 0;
 
 
-
 // Memory that emulates a pak
 typedef unsigned char BYTE;
 typedef void (*FPTR)();
 typedef void (*CMD_FPTR)(char *cmd);
 
+// The tracing was used for low level analysis of the protocol
 #define TRACE_LENGTH 8192
 BYTE trace[TRACE_LENGTH];
 
@@ -128,10 +142,10 @@ int trace_i = 0;
 int file_offset = 0;
 int max_filenum = 0;
 
+// File names for paks that are written to SD card
 #define FILE_PAGE 7
 #define PAK_FILE_NAME_FORMAT "pak%05d.opk"
 #define PAK_FILE_NAME_GLOB   "pak*.opk"
-
 
 // I2C Port descriptor
 typedef struct _I2C_PORT_DESC
@@ -207,9 +221,12 @@ int menuloop_done = 0;
 volatile BYTE pak_memory[PAK_MEMORY_SIZE];
 #else
 
+// Complete 'angling' pack embedded in flash. It is probably possible to store
+// evrery known pack in SPI flash and not use the SD card at all. Obviously with no
+// SD card there's no saving of packs, though.
+
 BYTE pak_memory[PAK_MEMORY_SIZE] =
   {
-   
    0x78,0x04,0x56,0x00,0x03,0x02,0x35,0x46,0x06,0x4c,
    0x09,0x81,0x4d,0x41,0x49,0x4e,0x20,0x20,0x20,0x20,0x90,0x09,0x83,0x46,0x49,0x53,
    0x48,0x20,0x20,0x20,0x20,0x00,0x02,0x80,0x01,0x26,0x01,0x22,0x00,0x29,0x00,0xfc,

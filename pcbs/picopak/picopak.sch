@@ -479,8 +479,6 @@ F 3 "" H 8800 3400 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1150 8275 1600 8275
-Wire Wire Line
-	1050 8075 1500 8075
 Text Label 1150 8275 0    50   ~ 0
 QSPI_SCLK
 Text Label 1150 8075 0    50   ~ 0
@@ -1420,4 +1418,45 @@ Wire Wire Line
 Connection ~ 10900 9725
 Wire Wire Line
 	10900 9725 11250 9725
+$Comp
+L Device:R R7
+U 1 1 6131CA53
+P 925 8675
+F 0 "R7" H 995 8721 50  0000 L CNN
+F 1 "1k" H 995 8630 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0402_1005Metric" V 855 8675 50  0001 C CNN
+F 3 "~" H 925 8675 50  0001 C CNN
+	1    925  8675
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	925  8075 925  8525
+Wire Wire Line
+	925  8075 1500 8075
+$Comp
+L Device:Jumper_NO_Small JP1
+U 1 1 6132F30C
+P 925 9075
+F 0 "JP1" V 879 9123 50  0000 L CNN
+F 1 "Jumper_NO_Small" V 970 9123 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 925 9075 50  0001 C CNN
+F 3 "~" H 925 9075 50  0001 C CNN
+	1    925  9075
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR02
+U 1 1 6133032E
+P 925 9275
+F 0 "#PWR02" H 925 9025 50  0001 C CNN
+F 1 "GND" H 775 9225 50  0000 C CNN
+F 2 "" H 925 9275 50  0001 C CNN
+F 3 "" H 925 9275 50  0001 C CNN
+	1    925  9275
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	925  8825 925  8975
+Wire Wire Line
+	925  9175 925  9275
 $EndSCHEMATC

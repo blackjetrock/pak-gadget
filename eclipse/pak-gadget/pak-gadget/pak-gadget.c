@@ -1272,6 +1272,7 @@ const unsigned char init_seq2[] = {
 				   0xda, 0x12,      // COM config: A5:Disable left/right remap, A4:Alternate COM pin config from 12
 #endif
 				   0x81,0x2f,      // Contrast value
+				   //				   0x81,0x2f,      // Contrast value
 				   0xd9, 0xf1,     // Precharge, quite important
 				   0xdb, 0x40,     // Set Vcomh level, leave it out and inverted display.
 
@@ -1296,6 +1297,16 @@ const unsigned char display_setup_seq[] = {
 const unsigned char display_text_seq[] = {
 					  0x7e,0x11,0x11,0x11,0x7e,0x00,0x7f,0x49,0x49,0x49,0x36,0x00,0x00,0x3e,0x41,0x41,0x41,0x22,0x00,0x7f,0x41,0x41,0x41,0x22,0x1c,0x00,0x7f,0x49,0x49,0x49,0x41,0x00,
 };
+
+void oled_set_brightness(I2C_SLAVE_DESC *slave, int percent)
+{
+  unsigned char seq[2];
+
+  seq[0] = 0x81;      // Set contrast (brightness)
+  seq[1] = percent * 255 / 100;
+
+  oled_send_cmd(slave, sizeof(seq), &(seq[0]), I2C_CMD, I2C_NO_REPEAT);
+}
 
 // Set XY to given position
 // We attempt to position to the byte that holds the pixel (x,y)
@@ -1356,6 +1367,7 @@ struct MENU_ELEMENT listfiles[MAX_LISTFILES+1];
 int num_listfiles;
 char names[MAX_LISTFILES][MAX_NAME];
 char current_file[MAX_NAME+1];
+int brightness_percent = 100;
 
 // read the file with the given name into the buffer
 
@@ -2447,24 +2459,53 @@ void process_config_file(I2C_SLAVE_DESC *slave)
       return;
     }
 
-  // Get a line from the file
-  ff_fgets(&(fileline[0]), sizeof(fileline)-1, fp);
-  fileline[strlen(fileline)-1] = '\0';
 
+
+  
+  // Get lines from the file
+  while( ff_fgets(&(fileline[0]), sizeof(fileline)-1, fp) != NULL )
+    {
+      char keyword[80];
+      char name[80];
+
+      // Remove trailing newline
+      fileline[strlen(fileline)-1] = '\0';
+      
+      keyword[0] = '\0';
+      name[0] = '\0';
+
+      oled_clear_display(slave);
+      oled_set_xy(slave, 0, 0);
+      sprintf(line, "[%s]", fileline);
+      oled_display_string(slave, line);
+      loop_delay(3000000);
+      
+      sscanf(fileline, "%[^=]=%s", keyword, name);
+
+      if( strcmp(keyword, "startfile") == 0 )
+	{
+	  strcpy(current_file, name);
+	  
+	  // read the file
+	  core_read(&oled0, current_file);
+	}
+      
+      if( strcmp(keyword, "brightness") == 0 )
+	{
+	  sscanf(name, "%d", &brightness_percent);
+	  oled_set_brightness(&oled0, brightness_percent);
+	  
+	  oled_clear_display(slave);
+	  oled_set_xy(slave, 0, 0);
+	  sprintf(line, "Brightness: %d%%", brightness_percent);
+	  oled_display_string(slave, line);
+	  loop_delay(3000000);
+	}
+      
+    }
+  
   ff_fclose(fp);
   unmount_sd();
-
-  char keyword[80];
-  char name[80];
-
-  sscanf(fileline, "%[^=]=%s", keyword, name);
-  if( strcmp(keyword, "startfile") == 0 )
-    {
-      strcpy(current_file, name);
-
-      // read the file
-      core_read(&oled0, current_file);
-    }
 }
 
 // Read the file with the given name into the buffer

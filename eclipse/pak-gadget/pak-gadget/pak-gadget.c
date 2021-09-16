@@ -127,15 +127,15 @@ typedef void (*CMD_FPTR)(char *cmd);
 BYTE trace[TRACE_LENGTH];
 
 int trace_i = 0;
-//#define TRACE(XX) if(trace_i != (TRACE_LENGTH-1)) {trace[trace_i++] = XX; trace_i %= TRACE_LENGTH;}
-#define TRACE(XX)
+#define TRACE(XX) if(trace_i != (TRACE_LENGTH-1)) {trace[trace_i++] = XX; trace_i %= TRACE_LENGTH;}
+//#define TRACE(XX)
 
 //#define WRITE_TRAP if( (PAK_ADDRESS + data) == 0)  while(1);
 
 #define WRITE_TRAP
 
-//#define PAK_MEMORY_SIZE  65536
-#define PAK_MEMORY_SIZE  32768
+#define PAK_MEMORY_SIZE  65536
+//#define PAK_MEMORY_SIZE  32768
 
 // Allow a file to be selected. The file name will be stored for a later 'read' command.
 
@@ -2605,7 +2605,7 @@ void core_read(I2C_SLAVE_DESC *slave, char * arg)
   if( modify_header )
     {
       pak_memory[0] = 0x78;
-      pak_memory[1] = 0x04; //64K, could allow original length through
+      pak_memory[1] = 0x08; //64K, could allow original length through
       pak_memory[2] = 0x56;
       pak_memory[3] = 0x00;
       pak_memory[4] = 0x03;

@@ -2680,7 +2680,7 @@ void core_writefile(bool oled_nserial)
     {
       printf("f_close error: %s (%d)\n", FRESULT_str(fr), fr);
       unmount_sd();
-      return false;
+      return;
     }
 
   oled_set_xy(&oled0, 0, 3*8);

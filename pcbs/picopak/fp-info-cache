@@ -1,4 +1,4 @@
-17050052669844341
+-9206313793773336269
 8wTermBlk
 8wTermBlk
 
@@ -90,6 +90,13 @@ BLUEPILL-EXTENSION
 0
 31
 28
+BP
+BLUEPILL_NOSWD
+
+
+0
+40
+37
 BP
 Pin_Header_Angled_1x06_Pitch2.54mm
 Through hole angled pin header, 1x06, 2.54mm pitch, 6mm pin length, single row
@@ -67045,6 +67052,27 @@ WiFi IEEE802.11 b/g/n
 0
 44
 44
+RP2040_minimal
+Crystal_SMD_HC49-US
+SMD Crystal HC-49-SD http://cdn-reichelt.de/documents/datenblatt/B400/xxx-HC49-SMD.pdf, 11.4x4.7mm^2 package
+SMD SMT crystal
+0
+2
+2
+RP2040_minimal
+RP2040-QFN-56
+QFN, 56 Pin (http://www.cypress.com/file/416486/download#page=40), generated with kicad-footprint-generator ipc_dfn_qfn_generator.py
+QFN DFN_QFN
+0
+70
+57
+RP2040_minimal
+USB_Micro-B_Amphenol_10103594-0001LF_Horizontal_modified
+Micro USB Type B 10103594-0001LF, http://cdn.amphenol-icc.com/media/wysiwyg/files/drawing/10103594.pdf
+USB USB_B USB_micro USB_OTG
+0
+17
+6
 Relay_SMD
 Relay_DPDT_AXICOM_IMSeries_JLeg
 http://www.te.com/commerce/DocumentDelivery/DDEController?Action=showdoc&DocId=Specification+Or+Standard%7F108-98001%7FW5%7Fpdf%7FEnglish%7FENG_SS_108-98001_W5.pdf
@@ -70279,41 +70307,6 @@ TANBUS
 0
 64
 64
-TANBUS65
-BERG_POWER_4x1
-
-CONN
-0
-4
-4
-TANBUS65
-C2V7
-Condensateur polarise
-CP
-0
-2
-2
-TANBUS65
-PhonoSkt
-
-
-0
-3
-3
-TANBUS65
-TANBUS
-
-
-0
-64
-64
-TANBUS65
-TO92_vert
-Transistor TO92 brochage type BC237
-TR TO92
-0
-3
-3
 TerminalBlock
 TerminalBlock_Altech_AK300-2_P5.00mm
 Altech AK300 terminal block, pitch 5.0mm, 45 degree angled, see http://www.mouser.com/ds/2/16/PCBMETRC-24178.pdf
@@ -75544,6 +75537,13 @@ Conn_uSDcard
 13
 9
 ajm_kicad
+OLED_SMALL
+
+
+0
+4
+4
+ajm_kicad
 fx502p_edge_2_54_2
 
 
@@ -75864,6 +75864,13 @@ QFN, 56 Pin (http://www.cypress.com/file/416486/download#page=40), generated wit
 QFN DFN_QFN
 0
 70
+57
+rp2040
+RP2040-QFN-56-no_holes
+QFN, 56 Pin (http://www.cypress.com/file/416486/download#page=40), generated with kicad-footprint-generator ipc_dfn_qfn_generator.py
+QFN DFN_QFN
+0
+61
 57
 rp2040
 RPi_Pico_SMD_TH

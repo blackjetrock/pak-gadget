@@ -2,75 +2,26 @@
 <projectDescription>
 	<name>pak-gadget-Debug@pak-gadget-eclipse</name>
 	<comment></comment>
-	<projects>
-	</projects>
+	<projects></projects>
 	<buildSpec>
 		<buildCommand>
 			<name>org.eclipse.cdt.make.core.makeBuilder</name>
 			<triggers>clean,full,incremental,</triggers>
 			<arguments>
 				<dictionary>
-					<key>org.eclipse.cdt.core.errorOutputParser</key>
-					<value>org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.append_environment</key>
-					<value>true</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
-					<value>all</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.arguments</key>
-					<value>-j4</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.command</key>
-					<value>/usr/bin/make</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.location</key>
-					<value>/tree/downloaded_tools/pico/pak-gadget-eclipse</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.target.auto</key>
-					<value>all</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.target.clean</key>
-					<value>clean</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.build.target.inc</key>
-					<value>all</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.buildArguments</key>
-					<value></value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.buildLocation</key>
-					<value>/tree/downloaded_tools/pico/pak-gadget-eclipse</value>
-				</dictionary>
-				<dictionary>
 					<key>org.eclipse.cdt.make.core.cleanBuildTarget</key>
 					<value>clean</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.contents</key>
-					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
-				</dictionary>
-				<dictionary>
-					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
-					<value>false</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.enableCleanBuild</key>
 					<value>true</value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
+					<key>org.eclipse.cdt.make.core.append_environment</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.stopOnError</key>
 					<value>true</value>
 				</dictionary>
 				<dictionary>
@@ -78,27 +29,74 @@
 					<value>true</value>
 				</dictionary>
 				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.command</key>
+					<value>/usr/bin/make</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.contents</key>
+					<value>org.eclipse.cdt.make.core.activeConfigSettings</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.inc</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.arguments</key>
+					<value>-j4</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.buildLocation</key>
+					<value>/tree/downloaded_tools/pico/pak-gadget-eclipse</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
 					<key>org.eclipse.cdt.make.core.environment</key>
 					<value>VERBOSE=1|CMAKE_NO_VERBOSE=1|</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableFullBuild</key>
+					<value>true</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.auto</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.enableAutoBuild</key>
+					<value>false</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.build.target.clean</key>
+					<value>clean</value>
 				</dictionary>
 				<dictionary>
 					<key>org.eclipse.cdt.make.core.fullBuildTarget</key>
 					<value>all</value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.stopOnError</key>
-					<value>true</value>
+					<key>org.eclipse.cdt.make.core.buildArguments</key>
+					<value></value>
 				</dictionary>
 				<dictionary>
-					<key>org.eclipse.cdt.make.core.useDefaultBuildCmd</key>
-					<value>false</value>
+					<key>org.eclipse.cdt.make.core.build.location</key>
+					<value>/tree/downloaded_tools/pico/pak-gadget-eclipse</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.make.core.autoBuildTarget</key>
+					<value>all</value>
+				</dictionary>
+				<dictionary>
+					<key>org.eclipse.cdt.core.errorOutputParser</key>
+					<value>org.eclipse.cdt.core.MakeErrorParser;org.eclipse.cdt.core.GCCErrorParser;org.eclipse.cdt.core.GASErrorParser;org.eclipse.cdt.core.GLDErrorParser;</value>
 				</dictionary>
 			</arguments>
 		</buildCommand>
 		<buildCommand>
 			<name>org.eclipse.cdt.make.core.ScannerConfigBuilder</name>
-			<arguments>
-			</arguments>
+			<arguments/>
 		</buildCommand>
 	</buildSpec>
 	<natures>
@@ -119,11 +117,6 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
 			<name>[Subprojects]/pak-gadget</name>
 			<type>2</type>
 			<location>/tree/downloaded_tools/pico/pak-gadget</location>
@@ -139,7 +132,12 @@
 			<location>/tree/downloaded_tools/pico/pico-sdk</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] bs2_default/</name>
+			<name>[Targets]</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget</name>
 			<type>2</type>
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
@@ -149,74 +147,59 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] bs2_default/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] bs2_default/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] bs2_default/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] bs2_default/Object Libraries</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] bs2_default/Precompile Header File</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] bs2_default/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] bs2_default/Source Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
-			<name>[Targets]/[exe] bs2_default/compile_time_choice.S</name>
+			<name>[Targets]/[exe] pak-gadget//divider.S</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/boot_stage2/compile_time_choice.S</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_divider/divider.S</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/CMake Rules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[exe] pak-gadget//irq_handler_chain.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Header Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[exe] pak-gadget//bit_ops_aeabi.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Object Files</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[exe] pak-gadget//divider.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_divider/divider.S</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Object Libraries</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[exe] pak-gadget//double_aeabi.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Precompile Header File</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[exe] pak-gadget//double_v1_rom_shim.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Resources</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
+			<name>[Targets]/[exe] pak-gadget//pico_int64_ops_aeabi.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget//float_aeabi.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget//float_v1_rom_shim.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget//mem_ops_aeabi.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget//crt0.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] pak-gadget/Source Files</name>
@@ -224,349 +207,9 @@
 			<locationURI>virtual:/virtual</locationURI>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/bit_ops_aeabi.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_bit_ops/bit_ops_aeabi.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/crt0.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_standard_link/crt0.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/divider.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_divider/divider.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/double_aeabi.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_double/double_aeabi.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/double_v1_rom_shim.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_double/double_v1_rom_shim.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/float_aeabi.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_float/float_aeabi.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/float_v1_rom_shim.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_float/float_v1_rom_shim.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/irq_handler_chain.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_irq/irq_handler_chain.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/mem_ops_aeabi.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_mem_ops/mem_ops_aeabi.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/pico_int64_ops_aeabi.S</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_int64_ops/pico_int64_ops_aeabi.S</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/adc.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/audio_device.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/binary_info.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/bootrom.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/cdc_device.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/claim.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/clocks.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/crc.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/critical_section.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/critical_section.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/datetime.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_util/datetime.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/dcd_rp2040.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/demo_logging.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/dfu_device.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/dfu_rt_device.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/dma.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/double_init_rom.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/double_math.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_double/double_math.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/f_util.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/ff.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/ff_stdio.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/ffsystem.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/ffunicode.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/flash.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/float_init_rom.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/float_math.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_float/float_math.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/glue.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/gpio.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/hid_device.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/hw_config.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/irq.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/lock_core.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/lock_core.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/midi_device.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/msc_device.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/multicore.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/mutex.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/mutex.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/my_debug.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/net_device.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/net/net_device.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/new_delete.cpp</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp</location>
-		</link>
-		<link>
 			<name>[Targets]/[exe] pak-gadget/Source Files/pak-gadget.c</name>
 			<type>1</type>
 			<location>/tree/downloaded_tools/pico/pak-gadget/pak-gadget.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/pheap.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_util/pheap.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/pico_malloc.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/pio.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/platform.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_platform/platform.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/pll.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/printf.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_printf/printf.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/queue.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_util/queue.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/reset_interface.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/rp2040_usb.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/rp2040_usb_device_enumeration.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/rtc.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/runtime.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/sd_card.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/sd_spi.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/sem.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/sem.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/spi.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/stdio.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/stdio_uart.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/stdio_usb.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c</location>
-		</link>
-		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/stdio_usb_descriptors.c</name>
-			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] pak-gadget/Source Files/stdlib.c</name>
@@ -574,9 +217,29 @@
 			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdlib/stdlib.c</location>
 		</link>
 		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/gpio.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_gpio/gpio.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/claim.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_claim/claim.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/platform.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_platform/platform.c</location>
+		</link>
+		<link>
 			<name>[Targets]/[exe] pak-gadget/Source Files/sync.c</name>
 			<type>1</type>
 			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_sync/sync.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/uart.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] pak-gadget/Source Files/time.c</name>
@@ -594,44 +257,59 @@
 			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_timer/timer.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/tusb.c</name>
+			<name>[Targets]/[exe] pak-gadget/Source Files/sem.c</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/tusb.c</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/sem.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/tusb_fifo.c</name>
+			<name>[Targets]/[exe] pak-gadget/Source Files/lock_core.c</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/lock_core.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/uart.c</name>
+			<name>[Targets]/[exe] pak-gadget/Source Files/mutex.c</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_uart/uart.c</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/mutex.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/unique_id.c</name>
+			<name>[Targets]/[exe] pak-gadget/Source Files/critical_section.c</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_sync/critical_section.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/usbd.c</name>
+			<name>[Targets]/[exe] pak-gadget/Source Files/datetime.c</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/device/usbd.c</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_util/datetime.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/usbd_control.c</name>
+			<name>[Targets]/[exe] pak-gadget/Source Files/pheap.c</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_util/pheap.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/usbtmc_device.c</name>
+			<name>[Targets]/[exe] pak-gadget/Source Files/queue.c</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/common/pico_util/queue.c</location>
 		</link>
 		<link>
-			<name>[Targets]/[exe] pak-gadget/Source Files/vendor_device.c</name>
+			<name>[Targets]/[exe] pak-gadget/Source Files/runtime.c</name>
 			<type>1</type>
-			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c</location>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_runtime/runtime.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/clocks.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_clocks/clocks.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/irq.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_irq/irq.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/pll.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_pll/pll.c</location>
 		</link>
 		<link>
 			<name>[Targets]/[exe] pak-gadget/Source Files/vreg.c</name>
@@ -647,6 +325,356 @@
 			<name>[Targets]/[exe] pak-gadget/Source Files/xosc.c</name>
 			<type>1</type>
 			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_xosc/xosc.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/printf.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_printf/printf.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/bootrom.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_bootrom/bootrom.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/double_init_rom.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_double/double_init_rom.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/double_math.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_double/double_math.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/float_init_rom.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_float/float_init_rom.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/float_math.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_float/float_math.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/pico_malloc.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_malloc/pico_malloc.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/new_delete.cpp</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_standard_link/new_delete.cpp</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/binary_info.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_standard_link/binary_info.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/stdio.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio/stdio.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/stdio_uart.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_uart/stdio_uart.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/reset_interface.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_usb/reset_interface.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/stdio_usb.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/stdio_usb_descriptors.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_stdio_usb/stdio_usb_descriptors.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/dcd_rp2040.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/dcd_rp2040.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/rp2040_usb.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/portable/raspberrypi/rp2040/rp2040_usb.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/usbd.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/device/usbd.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/usbd_control.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/device/usbd_control.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/audio_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/audio/audio_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/cdc_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/cdc/cdc_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/dfu_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/dfu_rt_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/dfu/dfu_rt_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/hid_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/hid/hid_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/midi_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/midi/midi_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/msc_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/msc/msc_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/net_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/net/net_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/usbtmc_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/usbtmc/usbtmc_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/vendor_device.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/class/vendor/vendor_device.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/tusb.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/tusb.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/tusb_fifo.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/lib/tinyusb/src/common/tusb_fifo.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/rp2040_usb_device_enumeration.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_fix/rp2040_usb_device_enumeration/rp2040_usb_device_enumeration.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/unique_id.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_unique_id/unique_id.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/flash.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_flash/flash.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/pio.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_pio/pio.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/adc.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_adc/adc.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/sd_card.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-extras/src/rp2_common/pico_sd_card/sd_card.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/dma.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_dma/dma.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/multicore.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/pico_multicore/multicore.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/ffsystem.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffsystem.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/ffunicode.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ffunicode.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/ff.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/ff14a/source/ff.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/sd_spi.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_spi.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/demo_logging.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/demo_logging.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/hw_config.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/hw_config.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/spi.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/spi.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/sd_card.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/sd_card.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/crc.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/sd_driver/crc.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/glue.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/glue.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/f_util.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/f_util.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/ff_stdio.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/ff_stdio.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/my_debug.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/my_debug.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/rtc.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/no-OS-FatFS-SD-SPI-RPi-Pico/FatFs_SPI/src/rtc.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/spi.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_spi/spi.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Source Files/rtc.c</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/hardware_rtc/rtc.c</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] pak-gadget/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default/</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default//compile_time_choice.S</name>
+			<type>1</type>
+			<location>/tree/downloaded_tools/pico/pico-sdk/src/rp2_common/boot_stage2/compile_time_choice.S</location>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default/Source Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default/Header Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default/Precompile Header File</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default/CMake Rules</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default/Resources</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default/Object Files</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
+		</link>
+		<link>
+			<name>[Targets]/[exe] bs2_default/Object Libraries</name>
+			<type>2</type>
+			<locationURI>virtual:/virtual</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

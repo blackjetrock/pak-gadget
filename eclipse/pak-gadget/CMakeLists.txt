@@ -28,7 +28,7 @@ add_executable(pak-gadget pak-gadget.c )
 pico_set_program_name(pak-gadget "pak-gadget")
 pico_set_program_version(pak-gadget "0.1")
 
-pico_enable_stdio_uart(pak-gadget 1)
+#pico_enable_stdio_uart(pak-gadget 0)
 pico_enable_stdio_usb(pak-gadget 1)
 
 # Add the standard library to the build

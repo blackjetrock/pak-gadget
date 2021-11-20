@@ -127,18 +127,22 @@ typedef void (*FPTR)();
 typedef void (*CMD_FPTR)(char *cmd);
 
 // The tracing was used for low level analysis of the protocol
-#define TRACE_LENGTH 8192
-BYTE trace[TRACE_LENGTH];
+#define TRACE_LENGTH 2
+BYTE trace0[TRACE_LENGTH];
+BYTE trace1[TRACE_LENGTH];
 
-int trace_i = 0;
-#define TRACE(XX) if(trace_i != (TRACE_LENGTH-1)) {trace[trace_i++] = XX; trace_i %= TRACE_LENGTH;}
+volatile int trace_i = 0;
+#define TRACE0(XX) if(trace_i != (TRACE_LENGTH-1)) {trace0[trace_i++] = XX; /*trace_i %= TRACE_LENGTH;*/}
+#define TRACE1(XX) if(trace_i != (TRACE_LENGTH-1)) {trace1[trace_i++] = XX; /*trace_i %= TRACE_LENGTH;*/}
+
 //#define TRACE(XX)
 
 //#define WRITE_TRAP if( (PAK_ADDRESS + data) == 0)  while(1);
 
 #define WRITE_TRAP
 
-#define PAK_MEMORY_SIZE  65536
+//#define PAK_MEMORY_SIZE  65536
+#define PAK_MEMORY_SIZE  (128*1024)
 //#define PAK_MEMORY_SIZE  32768
 
 // Allow a file to be selected. The file name will be stored for a later 'read' command.
@@ -2204,7 +2208,7 @@ typedef struct {
   char const *const help;
 } cmd_def_t;
 
-static cmd_def_t cmds[] = {
+static const cmd_def_t cmds[] = {
 			   {"setrtc", run_setrtc,
 			    "setrtc <DD> <MM> <YY> <hh> <mm> <ss>:\n"
 			    "  Set Real Time Clock\n"
@@ -2606,6 +2610,8 @@ void core_read(I2C_SLAVE_DESC *slave, char * arg)
   sprintf(line, "%d bytes read", pak_i);
   oled_display_string(slave, line);
 
+  // Do we modify the header?
+
   if( modify_header )
     {
       uint16_t csum = 0;
@@ -2622,15 +2628,28 @@ void core_read(I2C_SLAVE_DESC *slave, char * arg)
       //  pak_memory[8] = 0x06;
       //  pak_memory[9] = 0x4c;
 
+      // Pass flags through as we can now handle paged packs
+#if 0
       pak_memory[0] = 0x68;
-      pak_memory[1] = 0x04; //32K, could allow original length through
+#endif
+
+      // We can allow sizes up to and including 128K
+      if( pak_memory[1] > 6 )
+	{
+	  pak_memory[1] = 0x06; //128K
+	}
+      
+      // Pass next bytes on unaltered
+#if 0      
       pak_memory[2] = 0x56;
       pak_memory[3] = 0x00;
       pak_memory[4] = 0x03;
       pak_memory[5] = 0x02;
       pak_memory[6] = 0x35;
       pak_memory[7] = 0x46;
-
+#endif
+      
+      // Calculate correct checksum
       // The next two bytes are a cheksum of the first four WORDS
       for(int i = 0; i<8; i+=2)
 	{
@@ -3081,7 +3100,7 @@ void button_blank(struct MENU_ELEMENT *e)
 }
 
 
-struct MENU_ELEMENT home_menu[] =
+const struct MENU_ELEMENT home_menu[] =
   {
    {BUTTON_ELEMENT, "List",                       NULL,     button_list},
    {BUTTON_ELEMENT, "Clear",                      NULL,     button_clear},
@@ -3410,7 +3429,7 @@ void update_buttons()
 
 // read the value on the data bus
 
-int data_gpio[8] =
+const int data_gpio[8] =
   {
    SLOT_SD0_PIN,
    SLOT_SD1_PIN,
@@ -3568,10 +3587,10 @@ void handle_address(void)
   int smr;
   int spgm;
 
-  TRACE('I');
-  TRACE('N');
-  TRACE('I');
-  TRACE('T');
+  TRACE1('I');
+  TRACE1('N');
+  TRACE1('I');
+  TRACE1('T');
 
   while(1)
     {
@@ -3591,7 +3610,7 @@ void handle_address(void)
 	  // Only increment if the SMR line is low
 	  if( smr == 0 )
 	    {
-	      TRACE('c');
+	      TRACE1('c');
 	      ss_address+=2;
 	      ss_address &= (~1);
 	      
@@ -3610,13 +3629,13 @@ void handle_address(void)
 		  ss_address &= PAK_MEMORY_SIZE - 1;
 		}
 #endif	      
-	      TRACE(ss_address & 0xFF);
-	      TRACE((ss_address >> 8) & 0xFF);
+	      TRACE1(ss_address & 0xFF);
+	      TRACE1((ss_address >> 8) & 0xFF);
 	    }
 	  else
 	    {
 	      // Trace 'clock when SMR high', this is seen in traces
-	      TRACE('z');
+	      TRACE1('z');
 	    }
 	}
       
@@ -3626,13 +3645,13 @@ void handle_address(void)
 	  if( smr == 0 )
 	    {
 	      ss_address |= 1;
-	      TRACE('C');
-	      TRACE(ss_address & 0xFF);
-	      TRACE((ss_address >> 8) & 0xFF);
+	      TRACE1('C');
+	      TRACE1(ss_address & 0xFF);
+	      TRACE1((ss_address >> 8) & 0xFF);
 	    }
 	  else
 	    {
-	      TRACE('Z');
+	      TRACE1('Z');
 	    }
 	}
 
@@ -3666,7 +3685,7 @@ void handle_address(void)
 	      // Is it a read of the pak ID?
 	      if( smr && spgm )
 		{
-		  TRACE('i');
+		  TRACE1('i');
 		  
 		  // ID byte
 		  set_bus_outputs();
@@ -3687,7 +3706,7 @@ void handle_address(void)
 
       if( (last_spgm == 1) && (spgm == 0) )
 	{
-	  TRACE('P');
+	  TRACE1('P');
 	  ss_page += (1 << 8);
 	  ss_page &= 0x00007F00;
 	}
@@ -3697,9 +3716,9 @@ void handle_address(void)
       
       if( (last_smr == 0) && (smr == 1) )
 	{
-	  TRACE('R');
-	  TRACE('E');
-	  TRACE('S');
+	  TRACE1('R');
+	  TRACE1('E');
+	  TRACE1('S');
 	  
 	  ss_address=0;
 	  ss_page = 0;
@@ -3992,15 +4011,15 @@ int main()
 		  if( smr == 1 )
 		    {
 		      // Segment register write
-		      TRACE('s');
-		      TRACE(data);
+		      TRACE0('s');
+		      TRACE0(data);
 		    }
 		  else
 		    {
-		      TRACE('W');
-		      TRACE(data);
-		      TRACE(ss_address & 0xff);
-		      TRACE(ss_address >> 8);
+		      TRACE0('W');
+		      TRACE0(data);
+		      TRACE0(ss_address & 0xff);
+		      TRACE0(ss_address >> 8);
 		  
 #if !READ_ONLY	      
 		      // write to ram
@@ -4018,14 +4037,14 @@ int main()
 		      // ID byte
 		      set_bus_outputs();
 #if SUPPORT_ID_BYTE
-		      TRACE('I');
-		      TRACE(PAK_ID_BYTE);
+		      TRACE0('I');
+		      TRACE0(PAK_ID_BYTE);
 		      set_data_bus(PAK_ID_BYTE);
 #else
-		      TRACE('W');
-		      TRACE(pak_memory[PAK_ADDRESS]);
-		      TRACE(ss_address & 0xff);
-		      TRACE(ss_address >> 8);
+		      TRACE0('W');
+		      TRACE0(pak_memory[PAK_ADDRESS]);
+		      TRACE0(ss_address & 0xff);
+		      TRACE0(ss_address >> 8);
 
 		      set_data_bus(pak_memory[PAK_ADDRESS]);
 #endif
@@ -4034,8 +4053,8 @@ int main()
 		    {
 		      // Read of pak memory
 		      set_bus_outputs();
-		      TRACE('r');
-		      TRACE(pak_memory[ss_address]);
+		      TRACE0('r');
+		      TRACE0(pak_memory[ss_address]);
 		      set_data_bus(pak_memory[PAK_ADDRESS]);
 		    }
 		}
@@ -4060,15 +4079,15 @@ int main()
 		  if( smr == 1 )
 		    {
 		      // 128K segment write
-		      TRACE('s');
-		      TRACE(data);
+		      TRACE0('s');
+		      TRACE0(data);
 		    }
 		  else
 		    {
-		      TRACE('w');
-		      TRACE(data);
-		      TRACE(ss_address & 0xff);
-		      TRACE(ss_address >> 8);
+		      TRACE0('w');
+		      TRACE0(data);
+		      TRACE0(ss_address & 0xff);
+		      TRACE0(ss_address >> 8);
 
 
 #if !READ_ONLY	      
@@ -4127,8 +4146,8 @@ int main()
 		      // Is it a read of the pak ID?
 		      if( smr && spgm )
 			{
-			  TRACE('I');
-			  TRACE('D');
+			  TRACE0('I');
+			  TRACE0('D');
 			  // ID byte
 			  set_bus_outputs();
 			  set_data_bus(PAK_ID_BYTE);
@@ -4136,11 +4155,11 @@ int main()
 		      else
 			{
 			  // Read of pak memory
-			  TRACE('R');
-			  TRACE('D');
-			  TRACE(pak_memory[PAK_ADDRESS]);
-			  TRACE(PAK_ADDRESS & 0xff);
-			  TRACE(PAK_ADDRESS >> 8);
+			  TRACE0('R');
+			  TRACE0('D');
+			  TRACE0(pak_memory[PAK_ADDRESS]);
+			  TRACE0(PAK_ADDRESS & 0xff);
+			  TRACE0(PAK_ADDRESS >> 8);
 
 			  set_bus_outputs();
 			  set_data_bus(pak_memory[PAK_ADDRESS]);

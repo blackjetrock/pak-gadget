@@ -2634,9 +2634,9 @@ void core_read(I2C_SLAVE_DESC *slave, char * arg)
 #endif
 
       // We can allow sizes up to and including 128K
-      if( pak_memory[1] > 6 )
+      if( pak_memory[1] > 0x10 )
 	{
-	  pak_memory[1] = 0x06; //128K
+	  pak_memory[1] = 0x10; //128K
 	}
       
       // Pass next bytes on unaltered
@@ -2748,12 +2748,6 @@ void to_home_menu(struct MENU_ELEMENT *e)
   menu_selection = 0;
   menu_offset = 0;
   current_menu = the_home_menu;
-  draw_menu(&oled0, current_menu, true);
-}
-
-void button_clear(struct MENU_ELEMENT *e)
-{
-  loop_delay(3000000);
   draw_menu(&oled0, current_menu, true);
 }
 
@@ -3103,11 +3097,14 @@ void button_blank(struct MENU_ELEMENT *e)
 const struct MENU_ELEMENT home_menu[] =
   {
    {BUTTON_ELEMENT, "List",                       NULL,     button_list},
-   {BUTTON_ELEMENT, "Clear",                      NULL,     button_clear},
    {BUTTON_ELEMENT, "Write",                      NULL,     button_write},
+#if 0
    {BUTTON_ELEMENT, "Display",                    NULL,     button_display},
+#endif   
    {BUTTON_ELEMENT, "Blank",                      NULL,     button_blank},
+#if 0   
    {BUTTON_ELEMENT, "Read",                       NULL,     button_read},
+#endif
    {BUTTON_ELEMENT, "Exit",                       NULL,     button_exit},
    {MENU_END,       "",                           NULL,     NULL},
   };

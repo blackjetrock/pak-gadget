@@ -314,7 +314,7 @@ F 3 "~" H 8725 1275 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0129
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0129
 U 1 1 60CDD3B7
 P 3525 7075
 F 0 "#PWR0129" H 3525 7075 30  0001 C CNN
@@ -325,7 +325,7 @@ F 3 "" H 3525 7075 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0126
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0126
 U 1 1 60C7B835
 P 2225 1775
 F 0 "#PWR0126" H 2225 1775 30  0001 C CNN
@@ -380,7 +380,7 @@ F 3 "" H 2225 1425 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0123
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0123
 U 1 1 60C781DF
 P 2900 1775
 F 0 "#PWR0123" H 2900 1775 30  0001 C CNN
@@ -424,7 +424,7 @@ F 3 "" H 2900 1425 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0121
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0121
 U 1 1 60C7568C
 P 3575 1775
 F 0 "#PWR0121" H 3575 1775 30  0001 C CNN
@@ -820,7 +820,7 @@ F 3 "" H 2425 2975 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0127
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0127
 U 1 1 60EB4D46
 P 2425 4975
 F 0 "#PWR0127" H 2425 4975 30  0001 C CNN
@@ -862,7 +862,7 @@ F 3 "~" H 9050 5700 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0128
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0128
 U 1 1 60ED9E25
 P 9575 6100
 F 0 "#PWR0128" H 9575 6100 30  0001 C CNN
@@ -900,7 +900,7 @@ Wire Wire Line
 Wire Wire Line
 	4275 1625 4275 1775
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0130
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0130
 U 1 1 60F20010
 P 4275 1775
 F 0 "#PWR0130" H 4275 1775 30  0001 C CNN
@@ -995,7 +995,7 @@ F 3 "" H 5525 1900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0112
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0112
 U 1 1 60C430C8
 P 6250 3975
 F 0 "#PWR0112" H 6250 3975 30  0001 C CNN
@@ -1128,7 +1128,7 @@ Wire Wire Line
 Wire Wire Line
 	3300 4575 3300 4675
 $Comp
-L Microtan_65_CPU-cache:GND #PWR0103
+L pak_breakout-rescue:GND-Microtan_65_CPU-cache #PWR0103
 U 1 1 60FC79B0
 P 3300 4675
 F 0 "#PWR0103" H 3300 4675 30  0001 C CNN

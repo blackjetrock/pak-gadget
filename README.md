@@ -20,7 +20,7 @@ This is a pak-gadget that fits in the form factor of a datapak in the slot in th
 Operation
 =========
 
-The pak gadget plugs in to either datapack slot on a Psion Organiser 2. It can be powered by theUSB socket on the PCB, or it can be wired in to the 
+The pak gadget plugs in to either datapack slot on a Psion Organiser 2. It can be powered by the USB socket on the PCB, or it can be wired in to the 
 internal supply of the organiser. A transistor is needed to switch the battery voltage on to the gadget when the LCD controller is turned on. When wired in 
 the USB connection MUST NOT be used. A later revision of the PCB (untested as yet) has the extra transistor needed for internal power on the PCB.
 
@@ -38,11 +38,13 @@ Menu options
 ============
 
 List
+----
 This lists the .OPK files on the SD card. Selecting a file loads it into the gadget RAM buffer ready to emulate it when the menu is exited.
 
 Write
+-----
 This writes the current RAM data to a file on the SD card. This enables a pak gadget that has been used as a RAM pack to save the data on SD card so that 
-it can be loaded back in later. When power is removed the RAM biuffer is lost so this is the only way to have non volatile storage with the pak gadget.
+it can be loaded back in later. When power is removed the RAM b uffer is lost so this is the only way to have non volatile storage with the pak gadget.
 
 The files are written with the name:
 paknnnnn.opk
@@ -51,8 +53,10 @@ where nnnnn is an increasing number for each file saved. The pak gadget checks f
 highest number for each file write.
 
 Blank
+-----
 This clears the RAM buffer and sets the pak gadget up as a blank pack which can then be sized and used as a RAM pack.
 
 Exit
-This exits the menu and enters the emulation loop so that the pak gadget will look like a datapack again. While in th emenu system the gadget does not emulate a pack.
+----
+This exits the menu and enters the emulation loop so that the pak gadget will look like a datapack again. While in the menu system the gadget does not emulate a pack.
 

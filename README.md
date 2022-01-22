@@ -15,7 +15,7 @@ A 'breakout' pak-gadget which is a T shaped PCB that plugs in to the datapak slo
 Pak Sized pak-gadget
 ====================
 
-This is a pak-gadget that fits in the form factor of a datapak in the slot in the organiser. It has a smaller OLED display and buttons that both face towards the back of the organiser. Poweris still USB. When disconnected from power the organiser cover should fit in the closed position. The gadget can be wired in to the internal power supply of the organiser.On older PCB designs this requires an external transistor and a wire to the gadget. The later designs have that on the gadget PCB and require two wires.
+This is a pak-gadget that fits in the form factor of a datapak in the slot in the organiser. It has a smaller OLED display and buttons that both face towards the back of the organiser. Power is still USB. When disconnected from power the organiser cover should fit in the closed position. The gadget can be wired in to the internal power supply of the organiser.On older PCB designs this requires an external transistor and a wire to the gadget. The later designs have that on the gadget PCB and require two wires.
 
 Operation
 =========

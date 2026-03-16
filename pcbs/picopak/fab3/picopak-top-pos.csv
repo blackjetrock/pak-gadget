@@ -1,0 +1,7 @@
+Ref,Val,Package,PosX,PosY,Rot,Side
+"J1","USB_B_Micro","USB_Micro-B_Amphenol_10103594-0001LF_Horizontal_modified",207.350000,-85.650000,90.000000,top
+"J2","Conn_02x08_Odd_Even","Psion_datapak_2x08_P2.54mm_Horizontal",173.050000,-88.400000,180.000000,top
+"R7","1k","C_0402_1005Metric",203.700000,-77.300000,90.000000,top
+"U9","74LS245","TSSOP-20_4.4x6.5mm_P0.65mm",179.600000,-74.800000,0.000000,top
+"U10","74LS245","TSSOP-20_4.4x6.5mm_P0.65mm",179.600000,-84.000000,0.000000,top
+"XS1","SD_ebay-uSD-push_push_SMD","Conn_uSDcard",194.400000,-81.200000,0.000000,top

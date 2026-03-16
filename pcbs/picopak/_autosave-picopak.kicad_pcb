@@ -11894,7 +11894,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "1m"
+		(property "Value" "1M"
 			(at 0 -1.17 90)
 			(layer "B.Fab")
 			(uuid "61ef27ca-711b-47b3-bc2e-3fb1095cab98")
@@ -12076,7 +12076,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "1m"
+		(property "Value" "1M"
 			(at 0 -1.17 90)
 			(layer "B.Fab")
 			(uuid "1a82e705-4306-46ad-ba31-e49a27f15894")
